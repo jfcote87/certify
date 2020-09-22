@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -14,6 +15,13 @@ import (
 )
 
 var baseURL = "https://api.certify.com/v1"
+
+// ErrResponse describes the structure of 400-5XX
+// responses from Certify
+type ErrResponse struct {
+	Code  string `json:"errorCode"`
+	Value string `json:"errorValue"`
+}
 
 // ExpRpt describes certify expense report
 type ExpRpt struct {
@@ -199,6 +207,15 @@ type CmdResult struct {
 	ID      string `json:"ID,omitempty"`
 	Status  string `json:"Status,omitempty"`
 	Message string `json:"Message,omitempty"`
+}
+
+// GetError checks for error message in result.  Returns
+// nil if no error is found.
+func (c *CmdResult) GetError() error {
+	if c.Status != "Error" && c.Message == "" {
+		return nil
+	}
+	return fmt.Errorf("ID: %s %s %s", c.ID, c.Status, c.Message)
 }
 
 // ResultHeader is the generic paging fields for a result
