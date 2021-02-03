@@ -88,6 +88,8 @@ type Expense struct {
 	Reimbursable          bool
 	ReimAmount            float64
 	SubmittedAmount       float64
+	ConvertedAmount       float64
+	ConvertedReimAmount   float64
 	ExpenseDate           string
 	PostingDate           string
 	LodgingCheckInDate    string
@@ -105,6 +107,7 @@ type Expense struct {
 	Processed             bool
 	Currency              string
 	SubmittedCurrency     string
+	ConvertedCurrency     string
 	Reason                string
 	VATAmount             float64
 	HSTAmount             float64
@@ -163,17 +166,17 @@ type Cat struct {
 	GLCode                        string  `json:"GLCode,omitempty"`
 	FilterDepartmentID            string  `json:"FilterDepartmentID,omitempty"`
 	PrepaidCode                   string  `json:"PrepaidCode,omitempty"`
-	RequireReceiptOverride        int     `json:"RequireReceiptOverride,omitempty"`
-	RequireReceiptThresholdAmount float64 `json:"RequireReceiptThresholdAmount,omitempty"`
-	DetailedMealAttendees         int     `json:"DetailedMealAttendees,omitempty"`
-	PersonalExpenses              int     `json:"PersonalExpenses,omitempty"`
-	RequireReason                 int     `json:"RequireReason,omitempty"`
-	StrictFilteringException      int     `json:"StrictFilteringException,omitempty"`
-	SupressBillable               int     `json:"SupressBillable,omitempty"`
-	SupressBillableDefaultValue   int     `json:"SupressBillableDefaultValue,omitempty"`
-	DeductCommuteUnits            int     `json:"DeductCommuteUnits,omitempty"`
-	CashAdvances                  int     `json:"CashAdvances,omitempty"`
-	DailyMealLimit                int     `json:"DailyMealLimit,omitempty"`
+	RequireReceiptOverride        int     `json:"RequireReceiptOverride"`
+	RequireReceiptThresholdAmount float64 `json:"RequireReceiptThresholdAmount"`
+	DetailedMealAttendees         int     `json:"DetailedMealAttendees"`
+	PersonalExpenses              int     `json:"PersonalExpenses"`
+	RequireReason                 int     `json:"RequireReason"`
+	StrictFilteringException      int     `json:"StrictFilteringException"`
+	SupressBillable               int     `json:"SupressBillable"`
+	SupressBillableDefaultValue   int     `json:"SupressBillableDefaultValue"`
+	DeductCommuteUnits            int     `json:"DeductCommuteUnits"`
+	CashAdvances                  int     `json:"CashAdvances"`
+	DailyMealLimit                int     `json:"DailyMealLimit"`
 	Active                        int     `json:"Active"`
 }
 
