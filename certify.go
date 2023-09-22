@@ -245,6 +245,21 @@ type ExpRptGLDResult struct {
 	Dims []ExpRptGLD `json:"ExpRptGLDs,omitempty"`
 }
 
+// ReceiptResult is the result of a GET /receipts call
+type ReceiptResult struct {
+	ResultHeader
+	Receipts []Receipt `json:"Receipts"`
+}
+
+// Receipt describes a receipt images for an individual expense line
+type Receipt struct {
+	ID         string `json:"ID,omitempty"`
+	Filename   string `json:"Filename"`
+	UploadDate string `json:"UploadDate"`
+	Image      []byte `json:"ReceiptImage"`
+	ExpenseID  string `json:"ExpenseID"`
+}
+
 // UserResult is the result of a GET /users call
 type UserResult struct {
 	ResultHeader
